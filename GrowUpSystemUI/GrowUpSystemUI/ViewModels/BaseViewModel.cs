@@ -1,9 +1,9 @@
-﻿using GrowUpSystemUI.Models;
-using GrowUpSystemUI.Services;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using GrowUpSystemUI.Models;
+using GrowUpSystemUI.Services;
 using Xamarin.Forms;
 
 namespace GrowUpSystemUI.ViewModels
@@ -31,7 +31,9 @@ namespace GrowUpSystemUI.ViewModels
             Action onChanged = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingStore, value))
+            {
                 return false;
+            }
 
             backingStore = value;
             onChanged?.Invoke();
@@ -45,7 +47,9 @@ namespace GrowUpSystemUI.ViewModels
         {
             var changed = PropertyChanged;
             if (changed == null)
+            {
                 return;
+            }
 
             changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

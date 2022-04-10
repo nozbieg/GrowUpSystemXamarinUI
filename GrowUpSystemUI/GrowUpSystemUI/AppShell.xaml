@@ -2,6 +2,7 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:GrowUpSystemUI.Views"
+       xmlns:fontAwesome="clr-namespace:GrowUpSystemUI.Helpers"
        Title="GrowUpSystemUI"
        x:Class="GrowUpSystemUI.AppShell">
 
@@ -30,17 +31,41 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
-        <ShellContent Title="Browse" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemsPage}" />
+        <ShellContent Title="Enviroment" Route="TemperaturePage" ContentTemplate="{DataTemplate local:TemperaturePage}">
+            <ShellContent.Icon>
+            <FontImageSource FontFamily="RF"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Futbol}" />
+                
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="Humidity" Route="HumidityPage" ContentTemplate="{DataTemplate local:HumidityPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="RF"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Futbol}" />
+
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="Water" Route="WaterManagmentPage" ContentTemplate="{DataTemplate local:WaterManagmentPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="RF"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Futbol}" />
+
+            </ShellContent.Icon>
+        </ShellContent>
+
+        <ShellContent Title="Programming" Route="ProgrammingPage" ContentTemplate="{DataTemplate local:ProgrammingPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="RF"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Futbol}" />
+
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="Settings" Route="SettingsPage" ContentTemplate="{DataTemplate local:SettingsPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="RF"
+                             Glyph="{x:Static fontAwesome:FontAwesomeIcons.Futbol}" />
+
+            </ShellContent.Icon>
+        </ShellContent>
     </TabBar>
-
-    <!--
-        If you would like to navigate to this content you can do so by calling
-        await Shell.Current.GoToAsync("//LoginPage");
-    -->
-    <TabBar>
-        <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
-    </TabBar>
-
-
 </Shell>
