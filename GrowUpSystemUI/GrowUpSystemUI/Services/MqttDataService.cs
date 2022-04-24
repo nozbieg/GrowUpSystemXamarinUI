@@ -56,6 +56,10 @@ namespace GrowUpSystemUI.Services
                 await _client.ConnectAsync(_options);
                 await _client.SubscribeAsync("GrowUpSystemUI_TemperatureChanged");
                 await _client.SubscribeAsync("GrowUpSystemUI_HumidityChanged");
+                await _client.SubscribeAsync("GrowUpSystemUI_MoistOneChanged");
+                await _client.SubscribeAsync("GrowUpSystemUI_MoistTwoChanged");
+                await _client.SubscribeAsync("GrowUpSystemUI_MoistThreeChanged");
+                await _client.SubscribeAsync("GrowUpSystemUI_MoistFourChanged");
             }
             catch (Exception e)
             {

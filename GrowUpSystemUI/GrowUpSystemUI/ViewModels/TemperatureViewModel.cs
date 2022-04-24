@@ -13,7 +13,7 @@ namespace GrowUpSystemUI.ViewModels
         string temperature;
         public string Temperature
         {
-            get { return temperature; }
+            get { return $"{temperature}°"; }
             set
             {
                 if (temperature != value)
@@ -28,7 +28,7 @@ namespace GrowUpSystemUI.ViewModels
         string humidity;
         public string Humidity
         {
-            get { return humidity; }
+            get { return $"{humidity}%"; }
             set
             {
                 if (humidity != value)

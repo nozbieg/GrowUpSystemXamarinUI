@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GrowUpSystemUI.ViewModels;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +13,8 @@ namespace GrowUpSystemUI.Views
         public HumidityPage()
         {
             InitializeComponent();
+            var viewModel = new HumidityViewModel();
+            BindingContext = viewModel;
         }
     }
 }
