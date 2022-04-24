@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Threading.Tasks;
 using GrowUpSystemUI.Services;
-using Prism.Events;
 using Xamarin.Forms;
 
 namespace GrowUpSystemUI
@@ -11,12 +11,17 @@ namespace GrowUpSystemUI
         public App()
         {
             InitializeComponent();
-            DependencyService.RegisterSingleton<IMqttDataService>(new MqttDataService(DependencyService.Get<IEventAggregator>()));
+            DependencyService.RegisterSingleton<IMqttDataService>(new MqttDataService());
             MainPage = new AppShell();
         }
 
         protected override void OnStart()
         {
+            var _mqttDataService = DependencyService.Get<IMqttDataService>();
+            Task.Run(async () =>
+            {
+                await _mqttDataService.Initialize();
+            });
         }
 
         protected override void OnSleep()
@@ -26,6 +31,8 @@ namespace GrowUpSystemUI
         protected override void OnResume()
         {
         }
+
+
 
     }
 }

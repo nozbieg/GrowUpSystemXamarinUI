@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GrowUpSystemUI.Views.TemperaturePage"
+             xmlns:viewModels="clr-namespace:GrowUpSystemUI.ViewModels"
+             x:DataType="viewModels:TemperatureViewModel"
              >
     <ContentPage.Content>
         <StackLayout>
@@ -9,7 +11,12 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
 
-            <Label Text="{Binding Temperature}" />
+            <Label Text="{Binding Temperature}"
+                   VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding Humidity}"
+                   VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

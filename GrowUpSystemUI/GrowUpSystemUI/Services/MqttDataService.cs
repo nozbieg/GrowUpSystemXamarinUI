@@ -7,7 +7,6 @@ using GrowUpSystemUI.Models;
 using MQTTnet;
 using MQTTnet.Client;
 using MQTTnet.Client.Options;
-using Prism.Events;
 using Xamarin.Forms;
 
 namespace GrowUpSystemUI.Services
@@ -17,13 +16,8 @@ namespace GrowUpSystemUI.Services
         IMqttClient _client;
         static IMqttClientOptions _options;
 
-        IEventAggregator _eventAggregator;
-
-
-        public MqttDataService(IEventAggregator eventAggregator)
+        public MqttDataService()
         {
-
-            _eventAggregator = eventAggregator;
             Debug.WriteLine($"\n\n in MqttDataService constructor \n\n");
         }
 
@@ -60,7 +54,8 @@ namespace GrowUpSystemUI.Services
 
 
                 await _client.ConnectAsync(_options);
-                await _client.SubscribeAsync("GrowUpSystemUI");
+                await _client.SubscribeAsync("GrowUpSystemUI_TemperatureChanged");
+                await _client.SubscribeAsync("GrowUpSystemUI_HumidityChanged");
             }
             catch (Exception e)
             {
@@ -98,7 +93,7 @@ namespace GrowUpSystemUI.Services
                     Message = Encoding.UTF8.GetString(e.ApplicationMessage.Payload)
                 };
                 Debug.WriteLine($"Message received in MqttDataService _client_MqttMsgPublishReceived {mmt.Message}");
-                _eventAggregator.GetEvent<MqttMessageTransport>().Publish(mmt);
+                mmt.Handle();
             });
         }
 

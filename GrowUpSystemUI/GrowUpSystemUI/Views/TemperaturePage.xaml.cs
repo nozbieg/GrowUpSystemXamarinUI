@@ -15,13 +15,6 @@ namespace GrowUpSystemUI.Views
             InitializeComponent();
             var viewModel = new TemperatureViewModel();
             BindingContext = viewModel;
-
         }
-
-        public string Temperature { get; set; }
-        public string Humidity { get; set; }
-
-
-
     }
 }
