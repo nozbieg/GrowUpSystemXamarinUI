@@ -1,8 +1,7 @@
-﻿using GrowUpSystemUI.Services;
-using GrowUpSystemUI.Views;
-using System;
+﻿using System;
+using GrowUpSystemUI.Services;
+using Prism.Events;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace GrowUpSystemUI
 {
@@ -12,8 +11,7 @@ namespace GrowUpSystemUI
         public App()
         {
             InitializeComponent();
-
-            DependencyService.Register<MockDataStore>();
+            DependencyService.RegisterSingleton<IMqttDataService>(new MqttDataService(DependencyService.Get<IEventAggregator>()));
             MainPage = new AppShell();
         }
 
@@ -28,5 +26,6 @@ namespace GrowUpSystemUI
         protected override void OnResume()
         {
         }
+
     }
 }

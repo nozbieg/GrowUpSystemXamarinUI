@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using GrowUpSystemUI.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,9 +9,19 @@ namespace GrowUpSystemUI.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TemperaturePage : ContentPage
     {
+
         public TemperaturePage()
         {
             InitializeComponent();
+            var viewModel = new TemperatureViewModel();
+            BindingContext = viewModel;
+
         }
+
+        public string Temperature { get; set; }
+        public string Humidity { get; set; }
+
+
+
     }
 }
