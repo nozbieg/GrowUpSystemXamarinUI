@@ -52,8 +52,8 @@ namespace GrowUpSystemUI.ViewModels
                 Humidity = args;
             });
 
-            Temperature = "19";
-            Humidity = "60";
+            Temperature = "Not initialized";
+            Humidity = "Not initialized";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

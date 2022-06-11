@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 using System.Threading;
@@ -52,14 +53,17 @@ namespace GrowUpSystemUI.Services
                     .Build();
 
 
-
+                IList<Task> tasklist = new List<Task>();
                 await _client.ConnectAsync(_options);
-                await _client.SubscribeAsync("GrowUpSystemUI_TemperatureChanged");
-                await _client.SubscribeAsync("GrowUpSystemUI_HumidityChanged");
-                await _client.SubscribeAsync("GrowUpSystemUI_MoistOneChanged");
-                await _client.SubscribeAsync("GrowUpSystemUI_MoistTwoChanged");
-                await _client.SubscribeAsync("GrowUpSystemUI_MoistThreeChanged");
-                await _client.SubscribeAsync("GrowUpSystemUI_MoistFourChanged");
+
+                tasklist.Add(_client.SubscribeAsync("GrowUpSystemUI_TemperatureChanged"));
+                tasklist.Add(_client.SubscribeAsync("GrowUpSystemUI_HumidityChanged"));
+                tasklist.Add(_client.SubscribeAsync("GrowUpSystemUI_MoistOneChanged"));
+                tasklist.Add(_client.SubscribeAsync("GrowUpSystemUI_MoistTwoChanged"));
+                tasklist.Add(_client.SubscribeAsync("GrowUpSystemUI_MoistThreeChanged"));
+                tasklist.Add(_client.SubscribeAsync("GrowUpSystemUI_MoistFourChanged"));
+
+                await Task.WhenAll(tasklist);
             }
             catch (Exception e)
             {

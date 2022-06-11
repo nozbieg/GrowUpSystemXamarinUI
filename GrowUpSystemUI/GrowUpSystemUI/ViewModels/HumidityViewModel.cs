@@ -12,10 +12,10 @@ namespace GrowUpSystemUI.ViewModels
 
         public HumidityViewModel()
         {
-            MoistSensor_One = "10";
-            MoistSensor_Two = "10";
-            MoistSensor_Three = "10";
-            MoistSensor_Four = "10";
+            MoistSensor_One = "Not initialized";
+            MoistSensor_Two = "Not initialized";
+            MoistSensor_Three = "Not initialized";
+            MoistSensor_Four = "Not initialized";
             MessageSubscribe();
 
         }
